@@ -1,0 +1,94 @@
+openapi: 3.0.0
+info:
+  title: Swagger Potion maker - OpenAPI 3.0
+  description: |-
+    This is a sample User management server based on the OpenAPI 3.0 specification.
+  version: 1.0.0
+servers:
+  - url: https://user-management.swagger.io/api/v1
+tags:
+  - name: users
+    description: Everything about users
+  - name: roles
+    description: Everything about roles
+  - name: user-roles
+    description: Everything about user-roles
+  - name: access-permissions
+    description: Everything about access-permissions
+paths: 
+  /users:
+    get: 
+      tags: 
+        - users
+      summary: Provides a list of users
+      operationId: getAllUsers
+      responses: 
+        '200':
+          description: successful operation
+          content: 
+            application/json: 
+              schema: 
+                type: array
+                items:
+                  $ref: '#/components/schemas/user'
+        '404':
+          description: Users not found
+  /users/{userId}:
+    get: 
+      tags: 
+        - users
+      summary: Find user by UserId
+      description: Returns a single User
+      operationId: getUserById
+      parameters: 
+        - name: userId
+          in: path
+          description: ID of user to returns
+          required: true
+          schema: 
+            type: string
+      responses: 
+        '200':
+          description: successful operation
+          content: 
+            application/json: 
+              schema: 
+                $ref: '#/components/schemas/user'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: User not found
+                
+components: 
+  schemas:
+    user:
+      type: object
+      properties: 
+        UserId:
+          type: string
+          example: f7dabcd1-df8b-4fe6-9666-bf123782593e
+        UserName:
+          type: string
+          example: Ivanov.I
+        FirstName:
+          type: string
+          example: Ivan
+        LastName:
+          type: string
+          example: Ivanov
+        FullName:
+          type: string
+          example: Ivan Ivanov
+        Email:
+          type: string
+          example: ivanov_i@example.com
+        UserGroupId:
+          type: integer
+          format: int64
+          example: 1
+        Active:
+          type: boolean
+          example: true
+        Deleted:
+          type: boolean
+          example: false
