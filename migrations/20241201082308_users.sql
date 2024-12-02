@@ -2,11 +2,16 @@
 -- +goose StatementBegin
 CREATE TABLE IF NOT EXISTS users (
   uuid VARCHAR(36),
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(64),
+  Userid SERIAL PRIMARY KEY,
+  UserName VARCHAR(64),
   passwordhash VARCHAR,
-  activity BOOLEAN,
-  deleted BOOLEAN );
+  FirstName VARCHAR(64),
+  LastName VARCHAR(64),
+  FullName VARCHAR,
+  Email VARCHAR(64),
+  UserGroupId VARCHAR,
+  Active BOOLEAN,
+  Deleted BOOLEAN );
 -- +goose StatementEnd
 
 -- +goose Down

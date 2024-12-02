@@ -2,11 +2,10 @@
 -- +goose StatementBegin
 CREATE TABLE IF NOT EXISTS access_permissions (
   uuid VARCHAR(36),
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(64),
-  viewing BOOLEAN,
-  reading BOOLEAN,
-  change BOOLEAN );
+  AccessPermissionsId SERIAL PRIMARY KEY,
+  Name VARCHAR(64),
+  Read BOOLEAN,
+  Change BOOLEAN );
 -- +goose StatementEnd
 
 -- +goose Down
