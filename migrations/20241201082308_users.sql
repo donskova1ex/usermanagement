@@ -3,13 +3,13 @@
 CREATE TABLE IF NOT EXISTS users (
   uuid VARCHAR(36) unique,
   id SERIAL PRIMARY KEY,
-  userName VARCHAR(64),
+  login VARCHAR(64),
   passwordhash VARCHAR,
-  firstName VARCHAR(64),
-  lastName VARCHAR(64),
-  fullName VARCHAR,
+  firstname VARCHAR(64),
+  lastname VARCHAR(64),
+  fullname VARCHAR,
   email VARCHAR(64),
-  userGroupId VARCHAR,
+  usergroupID VARCHAR,
   active BOOLEAN,
   deleted BOOLEAN );
 -- +goose StatementEnd
