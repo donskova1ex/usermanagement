@@ -2,7 +2,7 @@
 -- +goose StatementBegin
 CREATE TABLE IF NOT EXISTS user_roles (
   userId REFERENCES users(id),
-  roleId VARCHAR roles(id),
+  roleId REFERENCES roles(id),
   active BOOLEAN );
 -- +goose StatementEnd
 
