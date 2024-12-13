@@ -9,7 +9,6 @@ CREATE TABLE IF NOT EXISTS users (
   lastname VARCHAR(64),
   fullname VARCHAR,
   email VARCHAR(64),
-  usergroupID VARCHAR,
   active BOOLEAN,
   deleted BOOLEAN );
 -- +goose StatementEnd

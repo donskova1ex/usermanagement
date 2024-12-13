@@ -307,10 +307,6 @@ components:
         Email:
           example: ivanov_i@example.com
           type: string
-        UserGroupId:
-          example: 1
-          format: int64
-          type: integer
         Active:
           example: true
           type: boolean
