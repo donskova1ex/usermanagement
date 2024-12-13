@@ -1,11 +1,9 @@
 -- +goose Up
 -- +goose StatementBegin
 CREATE TABLE IF NOT EXISTS user_roles (
-  uuid VARCHAR(36),
-  UserRolesid SERIAL PRIMARY KEY,
-  UserId VARCHAR,
-  RoleId VARCHAR,
-  Active BOOLEAN );
+  userId REFERENCES users(id),
+  roleId VARCHAR roles(id),
+  active BOOLEAN );
 -- +goose StatementEnd
 
 -- +goose Down

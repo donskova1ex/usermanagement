@@ -1,9 +1,9 @@
 -- +goose Up
 -- +goose StatementBegin
 CREATE TABLE IF NOT EXISTS roles (
-  uuid VARCHAR(36),
-  Roleid SERIAL PRIMARY KEY,
-  AccessPermissionsId VARCHAR,
+  uuid VARCHAR(36) unique,
+  id SERIAL PRIMARY KEY,
+  accessPermissionsId VARCHAR,
   activity BOOLEAN );
 -- +goose StatementEnd
 
