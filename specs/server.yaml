@@ -13,6 +13,9 @@ tags:
     description: Everything about roles
   - name: user-roles
     description: Everything about user-roles
+  - name: persons
+    description: Everything about person
+  - name: user-groups
 paths:
   /users:
     get:
@@ -97,6 +100,99 @@ paths:
         - name: id
           in: path
           description: ID of user deleting
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: User not deleting
+  /persons:
+    get:
+      tags:
+        - persons
+      summary: Provides a list of persons
+      operationId: getAllPersons
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/person'
+        '404':
+          description: Persons not found
+  /persons/{id}:
+    get:
+      tags:
+        - persons
+      summary: Find person by ID
+      description: Returns a single Person
+      operationId: getPersonById
+      parameters:
+        - name: id
+          in: path
+          description: ID of person to returns
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/person'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Person not found
+    put:
+      tags:
+        - persons
+      summary: edit person by ID
+      description: Returns a change person
+      operationId: editPersonByID
+      requestBody:
+        description: Update an existent person
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/person'
+        required: true
+      parameters:
+        - name: id
+          in: path
+          description: ID of person changing
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/person'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Person not changing
+    delete:
+      tags:
+        - persons
+      summary: delete person by ID
+      description: delete person
+      operationId: deletePersonByID
+      parameters:
+        - name: id
+          in: path
+          description: ID of person deleting
           required: true
           schema:
             type: string
@@ -261,6 +357,85 @@ paths:
         '404':
           description: User role not changing
 
+  /users-groups:
+    get:
+      tags:
+        - user-groups
+      summary: Provides a list of user groups
+      operationId: getAllUserGroups
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/user_groups'
+        '404':
+          description: User groups not found
+  /user-groups/{userid}:
+    get:
+      tags:
+        - user-groups
+      summary: Find user-groups by userID
+      description: Returns user groups
+      operationId: getUserGroupsByUserId
+      parameters:
+        - name: userid
+          in: path
+          description: ID of user to returns
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/user_groups'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: User groups not found
+    put:
+      tags:
+        - user-groups
+      summary: edit user group by userID
+      description: Returns a change user group
+      operationId: editUserGroupByUserID
+      requestBody:
+        description: Update an existent user groups
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/user_groups'
+        required: true
+      parameters:
+        - name: userid
+          in: path
+          description: ID of user changing
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/user_groups'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: User role not changing
 
 components: 
   schemas:
@@ -270,29 +445,17 @@ components:
         Id:
           type: string
           example: f7dabcd1-df8b-4fe6-9666-bf123782593e
-        UserName:
+        personId:
           type: string
-          example: Ivanov.I
-        FirstName:
-          type: string
-          example: Ivan
-        LastName:
-          type: string
-          example: Ivanov
-        FullName:
-          type: string
-          example: Ivan Ivanov
-        Email:
-          type: string
-          example: ivanov_i@example.com
-        UserGroupId:
+          example: 1dr456h8-df8b-4fe6-1231-1aq5we9rt2y6
+        userGroupId:
           type: integer
           format: int64
           example: 1
-        Active:
+        active:
           type: boolean
           example: true
-        Deleted:
+        deleted:
           type: boolean
           example: false
     role:
@@ -328,5 +491,44 @@ components:
         active:
           type: boolean
           example: true
+    person:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 1dr456h8-df8b-4fe6-1231-1aq5we9rt2y6
+        firstName:
+          type: string
+          example: Ivan
+        lastName:
+          type: string
+          example: Ivanov
+        fullName:
+          type: string
+          example: Ivan Ivanov
+        eMail:
+          type: string
+          example: "ivanov_i@example.com"
+    user_groups:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 1
+        name:
+          type: string
+          example: loan viewing access
+        roleId:
+          type: string
+          example: 1dr456h8-df8b-4fe6-9666-1aq5we9rt2y6
+        userId:
+          type: string
+          example: f7dabcd1-df8b-4fe6-9666-bf123782593e
+        isActive:
+          type: boolean
+          example: true
+        isDeleted:
+          type: boolean
+          example: false
 
 
