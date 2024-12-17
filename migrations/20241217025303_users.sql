@@ -5,8 +5,8 @@ CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     person_id SERIAL REFERENCES persons(id),
     user_group_id SERIAL REFERENCES user_groups(id),
-    active BOOLEAN DEFAULT TRUE,
-    deleted BOOLEAN DEFAULT FALSE
+    active BOOLEAN,
+    deleted BOOLEAN
 );
 -- +goose StatementEnd
 

@@ -2,7 +2,7 @@ version: "3.9"
 services:
   postgres:
     image: postgres:15
-    hostname: postgres
+    hostname: postgres-usermanagement
     env_file:
       .env.dev
     volumes:
