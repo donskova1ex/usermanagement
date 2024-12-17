@@ -532,5 +532,3 @@ components:
         isDeleted:
           type: boolean
           example: false
-
-

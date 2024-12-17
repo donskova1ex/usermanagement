@@ -2,7 +2,7 @@
 -- +goose StatementBegin
 CREATE TABLE IF NOT EXISTS persons (
     uuid VARCHAR(36) unique,
-    id SERIAL PRIMARy KEY,
+    id SERIAL PRIMARY KEY,
     first_name VARCHAR(32),
     last_name VARCHAR(32),
     full_name VARCHAR(64),
