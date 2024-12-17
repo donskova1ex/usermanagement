@@ -448,9 +448,11 @@ components:
         personId:
           type: string
           example: 1dr456h8-df8b-4fe6-1231-1aq5we9rt2y6
+        userName:
+          type: string
+          example: Ivanov.I
         userGroupId:
-          type: integer
-          format: int64
+          type: string
           example: 1
         active:
           type: boolean
