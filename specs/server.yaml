@@ -451,9 +451,6 @@ components:
         userName:
           type: string
           example: Ivanov.I
-        userGroupId:
-          type: string
-          example: 1
         active:
           type: boolean
           example: true
